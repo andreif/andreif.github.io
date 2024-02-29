@@ -43,7 +43,7 @@
   .icon-border {
     opacity: 0;
   }
-  [aria-label="twitter"], [aria-label="email"] {
+  a[aria-label="twitter"], a[aria-label="email"] {
     display: none;
   }
 }
