@@ -10,7 +10,7 @@
 
 
   @media (prefers-color-scheme: dark) {
-    html:not([data-mode]), html[data-mode=dark] {
+    html:not([data-mode]), html[data-mode=dark], * {
         .highlight {
             .nf {
                 color: #079bd9;
@@ -25,20 +25,6 @@
                 color: rgb(255, 123, 114) !important;
             }    
         }
-    }
-    .highlight {
-        .nf {
-            color: #079bd9;
-        }
-        .o, .mi, .mf {
-            color: #3792b8 !important;
-        }
-        .p {
-            color: #69a1b9 !important;
-        }
-        .k, .kn, .kr, .kp, .kv, .ow {
-            color: rgb(255, 123, 114) !important;
-        }    
     }
   }
 
