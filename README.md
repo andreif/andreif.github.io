@@ -1,21 +1,6 @@
 # Chirpy Starter
 
-## Installation
 
-Sign in to GitHub and [**use this template**][use-template] to generate a brand new repository and name it
-`USERNAME.github.io`, where `USERNAME` represents your GitHub username.
-
-Add the following steps between `Setup Ruby` and `Build site` to avoid local clone & bundle.
-
-```yml
-      - name: Bundle
-        run: bundle
-
-      - name: Lock
-        run: cat Gemfile.lock
-```
-
-Can later commit `Gemfile.lock` to lock the dependencies.
 
 ## Usage
 
