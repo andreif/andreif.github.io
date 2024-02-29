@@ -46,7 +46,7 @@ jobs:
           bundler-cache: true
 
       - name: Build site
-        run: bundle && bundle exec jekyll b -d "_site${{ steps.pages.outputs.base_path }}"
+        run: bundle && cat Gemfile.lock && bundle exec jekyll b -d "_site${{ steps.pages.outputs.base_path }}"
         env:
           JEKYLL_ENV: "production"
 
