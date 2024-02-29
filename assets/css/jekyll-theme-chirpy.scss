@@ -149,16 +149,20 @@
   // ---------------
 
   @media (prefers-color-scheme: dark) {
-    .highlight .nf {
-        color: #079bd9;
-    }
-    .highlight .o {
-        color: #079bd9 !important;
-    }
-    .highlight .p {
-        color: #079bd9 !important;
-    }
-    .highlight .kn {
-        color: rgb(255, 123, 114) !important;
+    html:not([data-mode]) {
+        .highlight {
+            .nf {
+                color: #079bd9;
+            }
+            .o {
+                color: #079bd9 !important;
+            }
+            .p {
+                color: #079bd9 !important;
+            }
+            .kn {
+                color: rgb(255, 123, 114) !important;
+            }    
+        }
     }
   }
