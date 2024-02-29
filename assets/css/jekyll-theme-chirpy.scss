@@ -9,32 +9,41 @@
 // https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/_sass/colors/syntax-dark.scss
 
 
-  @media (prefers-color-scheme: dark) {
-    html:not([data-mode]), html[data-mode=dark], * {
-        .highlight {
-            .nf {
-                color: #079bd9;
-            }
-            .o, .mi, .mf {
-                color: #3792b8 !important;
-            }
-            .p {
-                color: #69a1b9 !important;
-            }
-            .k, .kn, .kr, .kp, .kv, .ow {
-                color: rgb(255, 123, 114) !important;
-            }    
-        }
+@media (prefers-color-scheme: dark) {
+  html:not([data-mode]), html[data-mode=dark], * {
+    .highlight {
+      .nf {
+        color: #079bd9;
+      }
+      .o, .mi, .mf {
+        color: #3792b8 !important;
+      }
+      .p {
+        color: #69a1b9 !important;
+      }
+      .k, .kn, .kr, .kp, .kv, .ow {
+        color: rgb(255, 123, 114) !important;
+      }    
     }
   }
+}
 
-  .code-header button:hover {
-    background-color: transparent !important;
-  }
-  .code-header button {
-    border: none !important;
-  }
+.code-header button:hover {
+  background-color: transparent !important;
+}
+.code-header button {
+  border: none !important;
+}
 
-  .highlight .lineno {
-    opacity: 0.2;
+.highlight .lineno {
+  opacity: 0.2;
+}
+
+.sidebar-bottom {
+  .icon-border {
+    opacity: 0;
   }
+  [aria-label="twitter"], [aria-label="email"] {
+    display: none;
+  }
+}
