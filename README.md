@@ -15,6 +15,8 @@ Add the following steps between `Setup Ruby` and `Build site` to avoid local clo
         run: cat Gemfile.lock
 ```
 
+Can later commit `Gemfile.lock` to lock the dependencies.
+
 ## Usage
 
 Please see the [theme's docs](https://github.com/cotes2020/jekyll-theme-chirpy#documentation).
