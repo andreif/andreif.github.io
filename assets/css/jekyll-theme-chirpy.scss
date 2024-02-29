@@ -151,7 +151,9 @@
   .highlight .nf {
     color: #079bd9;
   }
-
-  .highlight .o, .highlight .p {
+  .highlight .o {
+    color: #079bd9 !important;
+  }
+  .highlight .p {
     color: #079bd9 !important;
   }
