@@ -3,7 +3,6 @@ on:
   push:
     branches:
       - main
-      - master
     paths-ignore:
       - .gitignore
       - README.md
@@ -50,7 +49,7 @@ jobs:
 
       - name: Lock
         run: cat Gemfile.lock
-  
+
       - name: Build
         run: bundle exec jekyll b -d "_site${{ steps.pages.outputs.base_path }}"
         env:
