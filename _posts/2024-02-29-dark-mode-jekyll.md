@@ -2,7 +2,7 @@
 layout: post
 title: Perfect dark mode theme for GitHub Pages with Jekyll 
 # date: 2024-02-29 17:00:00 +0100
-categories: static
+categories: Static
 tags: jekyll dark-mode github-pages
 image:
   path: /assets/img/jekyll.webp
