@@ -71,7 +71,7 @@ Create `/assets/css/jekyll-theme-chirpy.scss` to use some opionated syntax highl
       .k, .kn, .kr, .kp, .kv, .ow {
         color: rgb(255, 123, 114) !important;
       }
-      .c1 {
+      .c, .c1 {
         color: #525252 !important;
       }
     }
