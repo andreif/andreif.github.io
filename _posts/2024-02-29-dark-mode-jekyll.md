@@ -96,7 +96,7 @@ Create `/assets/css/jekyll-theme-chirpy.scss` to use some opionated syntax highl
 }
 
 .embed-video {
-  width: 50%;
+  max-width: 500px;
 }
 ```
 
