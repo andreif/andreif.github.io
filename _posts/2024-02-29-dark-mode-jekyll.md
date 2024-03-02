@@ -10,7 +10,7 @@ image:
 
 ## Original guide
 
-[Watch Video](https://www.youtube.com/watch?v=F8iOU1ci19Q), read [Meet Jekyll - The Static Site Generator](https://technotim.live/posts/jekyll-docs-site/)
+[Watch Video](https://www.youtube.com/watch?v=F8iOU1ci19Q) and read [Meet Jekyll - The Static Site Generator](https://technotim.live/posts/jekyll-docs-site/) by Techno Tim.
 {% include embed/youtube.html id='F8iOU1ci19Q' %}
 
 ## Fixes and workarounds
