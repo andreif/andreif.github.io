@@ -102,7 +102,7 @@ References:
  - [https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/_sass/colors/syntax-dark.scss](https://github.com/cotes2020/jekyll-theme-chirpy/blob/master/_sass/colors/syntax-dark.scss)
 
 
-## Example of Python code
+## Example of Python code syntax highlighting
 
 ```py
 import re
