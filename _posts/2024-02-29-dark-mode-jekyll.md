@@ -56,6 +56,9 @@ Create `/assets/css/jekyll-theme-chirpy.scss` to use some opionated syntax highl
 @media (prefers-color-scheme: dark) {
   html:not([data-mode]), html[data-mode=dark], * {
     .highlight {
+      pre {
+        font-size: .70rem;
+      }
       .nf {
         color: #079bd9;
       }
