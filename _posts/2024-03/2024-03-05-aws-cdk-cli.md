@@ -65,8 +65,9 @@ v: cdk
 	cdk --version
 ```
 
-Search executables in local directory first:
+Search executables in local directory first to avoid prefixing with `./`:
 
 ```shell
 export PATH=".:$PATH"
+cdk --version
 ```
