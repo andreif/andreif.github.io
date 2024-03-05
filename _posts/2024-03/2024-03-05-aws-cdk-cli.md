@@ -48,7 +48,7 @@ cdk:
 Add the following line to your shell profile so that `cdk` is found globally
 
 ```shell
-export PATH="~/Projects/AWS-CDK-CLI:$PATH"
+export PATH="/Users/andrei/Projects/AWS-CDK-CLI:$PATH"
 ```
 
 ## Testing
