@@ -39,7 +39,7 @@ Make cdk binary running cdk image:
 ```makefile
 cdk:
 	docker build -t aws-cdk .
-	echo 'docker run --rm -it aws-cdk cdk $$*' > cdk
+	echo '#!/usr/bin/env bash\ndocker run --rm -it aws-cdk cdk $$*' > cdk
 	chmod +x cdk
 ```
 
