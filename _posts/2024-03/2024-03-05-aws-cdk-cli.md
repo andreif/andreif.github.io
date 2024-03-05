@@ -39,35 +39,30 @@ Make cdk binary running cdk image:
 ```makefile
 cdk:
 	docker build -t aws-cdk .
-	echo '#!/usr/bin/env bash\ndocker run --rm -it -v $$(pwd):/home -w /home aws-cdk cdk $$*' > cdk
+	echo '#!/bin/sh\ndocker run --rm -it -v "$${PWD}:/home" -w /home aws-cdk cdk $$*' > cdk
 	chmod +x cdk
 ```
 
-Test it
+## Shell setup
+
+Add the following line to your shell profile so that `cdk` is found globally
+
+```shell
+export PATH="~/Projects/AWS-CDK-CLI:$PATH"
+```
+
+## Testing
+
+Check version
 
 ```sh
-$ ./cdk --version
+$ cdk --version
 2.131.0 (build 92b912d)
 ```
 
+Init a new stack
+
 ```shell
 mkdir -p demo && cd demo
-../cdk init app --language python
-```
-
-One has to copy the script instead of symlinking to resolve pwd correctly. 
-
-```makefile
-cdk:
-	cp ~/Projects/AWS-CDK-CLI/cdk ./
-
-v: cdk
-	cdk --version
-```
-
-Search executables in local directory first to avoid prefixing with `./`:
-
-```shell
-export PATH=".:$PATH"
-cdk --version
+cdk init app --language python
 ```
