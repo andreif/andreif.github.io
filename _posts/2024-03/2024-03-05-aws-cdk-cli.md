@@ -54,3 +54,19 @@ $ ./cdk --version
 mkdir -p demo && cd demo
 ../cdk init app --language python
 ```
+
+One has to copy the script instead of symlinking to resolve pwd correctly. 
+
+```makefile
+cdk:
+	cp ~/Projects/AWS-CDK-CLI/cdk ./
+
+v: cdk
+	cdk --version
+```
+
+Search executables in local directory first:
+
+```shell
+export PATH=".:$PATH"
+```
