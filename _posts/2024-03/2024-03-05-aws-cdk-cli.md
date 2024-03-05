@@ -49,3 +49,8 @@ Test it
 $ ./cdk --version
 2.131.0 (build 92b912d)
 ```
+
+```shell
+mkdir -p demo && cd demo
+../cdk init app --language python
+```
