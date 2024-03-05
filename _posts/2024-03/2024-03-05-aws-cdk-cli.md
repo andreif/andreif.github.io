@@ -1,5 +1,5 @@
 ---
-title: Setting up AWS CDK
+title: Setting up AWS CDK CLI
 category: AWS
 tags: cdk
 ---
