@@ -73,7 +73,7 @@ Init a new stack
 mkdir -p demo && cd demo
 cdk init app --language python
 
-# 2a. Install dependencies using Node
+# 2a. Install dependencies created using local Node cdk
 .venv/bin/pip install -U pip
 .venv/bin/pip install -r requirements.txt
 
