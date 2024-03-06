@@ -21,7 +21,8 @@ cdk:
 	  && nvm install 20 \
 	  && npm install -g npm@latest \
 	  && npm install aws-cdk
-	echo '#!/usr/bin/env bash\n. ~/.nvm/nvm.sh && nvm use 20 && ${PWD}/node_modules/aws-cdk/bin/cdk $$*' > cdk
+	echo '#!/usr/bin/env bash\n. ~/.nvm/nvm.sh\nnvm use 20' > cdk
+	echo '$$(dirname "$${BASH_SOURCE[0]}")/node_modules/aws-cdk/bin/cdk $$*' >> cdk
 	chmod +x cdk
 ```
 
