@@ -90,3 +90,30 @@ echo "$(yq -Moj '.app = "venv/bin/python app.py"' cdk.json)" > cdk.json
 # 4. Synth CloudFormation template
 cdk synth | yq -P
 ```
+
+## AWS session
+
+In order to call AWS API we need to pass AWS session to the container.
+
+`aws-vault` allows creating a metadata service server on port 9099 so for standard 
+AWS CLI we could add `-p 9099:9099` to the `docker run` parameters but CDK CLI does not 
+support it and honestly, the service is too implicit to be considered safe when working 
+with multiple accounts.
+
+Instead, we can pass all environmental variables with names starting with `AWS_` prefix:
+
+```shell
+--env-file <(env | grep ^AWS_)
+```
+
+so that our run command in `cdk` file will look like
+
+```shell
+docker run --rm -it -v "$(pwd):/home" -w /home --env-file <(env | grep ^AWS_) aws-cdk cdk "$@"
+```
+
+and we can run `cdk deploy` the following way
+
+```shell
+aws-vault exec my-profile -- cdk deploy
+```
