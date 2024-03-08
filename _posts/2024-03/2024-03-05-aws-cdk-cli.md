@@ -78,11 +78,11 @@ cdk init app --language python
 .venv/bin/pip install -r requirements.txt
 
 # 2b. or using Docker
-cdk.sh -c '.venv/bin/python -m pip install -U pip'
-cdk.sh -c '.venv/bin/python -m pip install -r requirements.txt'
+cdk.sh -c 'python -m venv venv && venv/bin/pip install -U pip'
+cdk.sh -c 'venv/bin/pip install -r requirements.txt'
 
 # 3. Patch config
-echo "$(yq -M -oj '.app = ".venv/bin/python3 app.py"' cdk.json)" > cdk.json
+echo "$(yq -Moj '.app = "venv/bin/python app.py"' cdk.json)" > cdk.json
 
 # 4. Synth CloudFormation template
 cdk synth | yq -P
