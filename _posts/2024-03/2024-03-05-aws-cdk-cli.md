@@ -44,17 +44,16 @@ Make cdk binary running cdk image:
 ```makefile
 cdk:
 	docker build -t aws-cdk .
-	export run='#!/usr/bin/env bash\ndocker run --rm -it -v "$$(pwd):/home" -w /home aws-cdk' \
-	  && echo $${run}' cdk "$$@"' > cdk \
-	  && echo $${run}' sh "$$@"' > cdk.sh
-	chmod +x cdk cdk.sh
+	export sh='#!/usr/bin/env bash\n' \
+	  && echo $${sh}'docker run --rm -it -v "$$(pwd):/home" -w /home aws-cdk "$$@"' > cdk_run \
+	  && echo $${sh}'"$${BASH_SOURCE[0]}_run" cdk "$$@"' > cdk
+	chmod +x cdk cdk_run
 	./cdk --version
-	./cdk.sh -c 'cdk --version'
 ```
 
 ## Shell setup
 
-Add a similar line to your shell profile so that `cdk` is found globally
+Add a similar line to your shell profile so that `cdk` is found globally:
 
 ```shell
 export PATH="/Users/andrei/Projects/AWS-CDK-CLI:$PATH"
@@ -62,14 +61,14 @@ export PATH="/Users/andrei/Projects/AWS-CDK-CLI:$PATH"
 
 ## Testing
 
-Check version
+Check version:
 
 ```sh
-$ cd /tmp && cdk --version
+$ cd .. && cdk --version
 2.131.0 (build 92b912d)
 ```
 
-Init a new stack
+Init a new stack:
 
 ```shell
 # 1. Init stack
@@ -81,11 +80,12 @@ cdk init app --language python
 .venv/bin/pip install -r requirements.txt
 
 # 2b. or using Docker
-cdk.sh -c 'python -m venv venv && venv/bin/pip install -U pip'
-cdk.sh -c 'venv/bin/pip install -r requirements.txt'
+cdk_run python -m venv .venv
+cdk_run .venv/bin/pip install -U pip
+cdk_run .venv/bin/pip install -r requirements.txt
 
 # 3. Patch config
-echo "$(yq -Moj '.app = "venv/bin/python app.py"' cdk.json)" > cdk.json
+echo "$(yq -Moj '.app = ".venv/bin/python app.py"' cdk.json)" > cdk.json
 
 # 4. Synth CloudFormation template
 cdk synth | yq -P
@@ -106,13 +106,13 @@ Instead, we can pass all environmental variables with names starting with `AWS_`
 --env-file <(env | grep ^AWS_)
 ```
 
-so that our run command in `cdk` file will look like
+so that our run command in `cdk_run` file will look like:
 
 ```shell
-docker run --rm -it -v "$(pwd):/home" -w /home --env-file <(env | grep ^AWS_) aws-cdk cdk "$@"
+docker run --rm -it -v "$(pwd):/home" -w /home --env-file <(env | grep ^AWS_) aws-cdk "$@"
 ```
 
-and we can run `cdk deploy` the following way
+and we can run `cdk deploy` the following way:
 
 ```shell
 aws-vault exec my-profile -- cdk deploy
