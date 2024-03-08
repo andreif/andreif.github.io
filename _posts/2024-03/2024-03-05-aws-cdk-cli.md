@@ -4,6 +4,9 @@ category: AWS
 tags: cdk
 ---
 
+Reference guide by AWS:
+[https://docs.aws.amazon.com/cdk/v2/guide/hello_world.html](https://docs.aws.amazon.com/cdk/v2/guide/hello_world.html)
+
 ## Using local Node.js
 
 Install NVM as described in 
