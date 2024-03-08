@@ -80,7 +80,8 @@ Now synth the template:
 make clean synth
 ```
 
-Locking dependencies is a good idea for a more complex or regularly-updated stack, `requirements.txt`
+Locking dependencies is a good idea for a more complex or regularly-updated stack, 
+in `requirements.txt`:
 
 ```requirements
 aws-cdk-lib==2.131.0
@@ -97,4 +98,49 @@ venv_host:
 	
 ...:
 	cdk.sh -c 'venv/bin/pip install -r requirements.txt'
+```
+
+## Using CDK context to pass a list of trusted accounts
+
+```python
+from aws_cdk import aws_iam
+import aws_cdk
+
+
+class CloudWatchSharingStack(aws_cdk.Stack):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+        aws_iam.Role(
+            scope=self,
+            id="Role",
+            role_name='CloudWatch-CrossAccountSharingRole',
+            assumed_by=aws_iam.CompositePrincipal(
+                *(
+                    aws_iam.AccountPrincipal(account_id)
+                    for account_id in self.node.get_context("TrustedAccountIds").split(',')
+                )
+            ),
+            description="A role for sharing CloudWatch metrics across accounts",
+            managed_policies=[
+                aws_iam.ManagedPolicy.from_aws_managed_policy_name(name) for name in (
+                    'CloudWatchReadOnlyAccess',
+                    'CloudWatchAutomaticDashboardsAccess',
+                    'AWSXrayReadOnlyAccess',
+                )
+            ],
+        )
+
+
+app = aws_cdk.App()
+CloudWatchSharingStack(
+    scope=app,
+    id="CloudWatchSharingStack",
+    stack_name="CloudWatchSharingStack",
+)
+app.synth()
+```
+
+```shell
+cdk synth CloudWatchSharingStack --context TrustedAccountIds="123456789012"
 ```
