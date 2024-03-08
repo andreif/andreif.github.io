@@ -80,11 +80,21 @@ Now synth the template:
 make clean synth
 ```
 
+Locking dependencies is a good idea for a more complex or regularly-updated stack, `requirements.txt`
+
+```requirements
+aws-cdk-lib==2.131.0
+constructs>=10.0.0,<11.0.0
+```
+
 To make inspections work in PyCharm, one could create a host venv and use it for interpreter 
 
 ```makefile
 venv_host:
 	python -m venv venv_host
 	venv_host/bin/pip install -U pip
-	venv_host/bin/pip install  aws-cdk-lib  constructs
+	venv_host/bin/pip install -r requirements.txt
+	
+...:
+	cdk.sh -c 'venv/bin/pip install -r requirements.txt'
 ```
