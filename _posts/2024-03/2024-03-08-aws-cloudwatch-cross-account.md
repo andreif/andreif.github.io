@@ -79,3 +79,12 @@ Now synth the template:
 ```shell
 make clean synth
 ```
+
+To make inspections work in PyCharm, one could create a host venv and use it for interpreter 
+
+```makefile
+venv_host:
+	python -m venv venv_host
+	venv_host/bin/pip install -U pip
+	venv_host/bin/pip install  aws-cdk-lib  constructs
+```
