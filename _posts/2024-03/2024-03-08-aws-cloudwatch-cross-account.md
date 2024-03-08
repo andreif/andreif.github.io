@@ -141,6 +141,23 @@ CloudWatchSharingStack(
 app.synth()
 ```
 
+Example:
+
 ```shell
 cdk synth CloudWatchSharingStack --context TrustedAccountIds="123456789012"
+```
+
+Now, make it deploy:
+
+```makefile
+PROFILE = my-profile
+TRUSTED = 123,456
+CONTEXT = 'TrustedAccountIds=${TRUSTED}'
+
+synth: venv
+	rm -rf cdk.out
+	cdk synth CloudWatchSharingStack --context ${CONTEXT}
+
+deploy: venv
+	aws-vault exec ${PROFILE} -- cdk deploy CloudWatchSharingStack --context ${CONTEXT}
 ```
