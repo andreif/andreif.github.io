@@ -17,8 +17,8 @@ bun:
 	chmod +x bun bun_run
 
 /usr/local/bin/bun: bun
-	ln -s "$$(pwd)/bun_run" /usr/local/bin/ || true
-	ln -s "$$(pwd)/bun" /usr/local/bin/ || true
+	ln -sf "$$(pwd)/bun_run" /usr/local/bin/
+	ln -sf "$$(pwd)/bun" /usr/local/bin/
 	ls -l /usr/local/bin/bun*
 
 setup: /usr/local/bin/bun
