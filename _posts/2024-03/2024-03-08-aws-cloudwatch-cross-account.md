@@ -1,7 +1,7 @@
 ---
 title: Sharing CloudWatch metrics cross-account
 category: AWS
-tags: cdk cloudwatch cross-account
+tags: cdk cloudwatch cross-account python
 ---
 
 Using CDK CLI via Docker container as shown in the [previous post](https://andrei.fokau.se/aws-cdk-cli).
