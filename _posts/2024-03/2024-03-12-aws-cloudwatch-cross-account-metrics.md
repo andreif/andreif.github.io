@@ -4,7 +4,8 @@ category: AWS
 tags: cdk cloudwatch cross-account python
 ---
 
-[Previous post](https://andrei.fokau.se/aws-cdk-cli) shows how to enable cross-account access using role suggested by AWS.
+[Part 1](/aws-cloudwatch-cross-account) shows how to enable cross-account access using role suggested by AWS.
+
 Let's make it more secure by limiting:
 - trust relationships for that role to only CloudWatch cross-account service,
 - and permissions to only metrics. 
