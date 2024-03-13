@@ -12,7 +12,7 @@ bun:
 	docker pull oven/bun
 	export sh='#!/usr/bin/env bash\n' \
 	  && echo $${sh}'docker run --rm -it --init -v "$$(pwd):/home/bun/app" \\' > bun_run \
-	  && echo ' --env-file <(env | grep AWS_) oven/bun "$$@"' >> bun_run \
+	  && echo ' --env-file <(env | grep AWS_) -p 3000:3000 oven/bun "$$@"' >> bun_run \
 	  && echo $${sh}'"$${BASH_SOURCE[0]}_run" bun "$$@"' > bun
 	chmod +x bun bun_run
 
