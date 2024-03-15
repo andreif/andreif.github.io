@@ -31,3 +31,11 @@ Killed
 
 Subprocess exited with error 137
 ```
+
+### Update 1.0.31
+Still failing.
+
+But to be fair, CDK does not like it from the start showing warning:
+```
+!!  This software has not been tested with node v21.6.0.
+```
