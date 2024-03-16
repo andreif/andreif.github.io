@@ -1,7 +1,7 @@
 ---
 title: Setting up AWS CDK CLI
 category: AWS
-tags: cdk cli docker
+tags: aws-cdk cli docker
 ---
 
 Reference guide by AWS:

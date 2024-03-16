@@ -19,7 +19,7 @@ aws configure sso-session
 aws sso login --sso-session $name
 ```
 
-As the guide mentions, the configuration can be set manually too in `~/.aws/config` file, which can be more efficiently done via script if the number of profiles is large, or if they need to be regularly updated/synced.
+As the guide mentions, the configuration can be set manually too in `~/.aws/config` file. This can be done more efficiently via a script if the number of profiles is large, or if they need to be regularly updated/synced.
 
 Let's make a Python script to generate current profiles.
 

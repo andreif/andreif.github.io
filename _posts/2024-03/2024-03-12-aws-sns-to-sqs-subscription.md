@@ -1,7 +1,7 @@
 ---
 title: Subscribing SQS Queue to SNS Topic cross-account
 category: AWS
-tags: cdk python cross-account sns sqs
+tags: aws-cdk python cross-account sns sqs
 ---
 
 Example stack for subscribing to topics from various accounts from a single consumer account:

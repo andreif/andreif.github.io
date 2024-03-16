@@ -1,7 +1,7 @@
 ---
 title: Sharing CloudWatch metrics cross-account (part 2)
 category: AWS
-tags: cdk cloudwatch cross-account python
+tags: aws-cdk cloudwatch cross-account python
 ---
 
 [Part 1](/aws-cloudwatch-cross-account) shows how to enable cross-account access using role suggested by AWS.
