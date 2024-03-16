@@ -1,5 +1,5 @@
 ---
-title: Generating AWS profiles using API, CLI, and Python SDK
+title: Generating AWS Single Sign-On profiles using API, CLI, and Python SDK
 category: AWS
 tags: aws-cdk aws-cli aws-api python aws-vault aws-sso
 image:
