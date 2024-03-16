@@ -12,7 +12,7 @@ After being assigned permissions via [AWS Identity Center](https://aws.amazon.co
 aws-vault exec my-profile -- aws sts get-caller-identity
 ```
 
-### Official guide from AWS
+## Official guide from AWS
 
 To create profiles one could follow the [AWS documentation](https://docs.aws.amazon.com/cli/latest/userguide/sso-configure-profile-token.html) and run the following CLI commands
 
@@ -41,7 +41,7 @@ GRANT_TYPE = 'urn:ietf:params:oauth:grant-type:device_code'
 CLIENT_NAME = 'Andrei'
 ```
 
-### AWS SDK for Python (boto3)
+## AWS SDK for Python (boto3)
 
 With SDK we will use `sso` and `sso-oidc` services:
 
@@ -82,7 +82,7 @@ def get_access_token():
             interval += 5
 ```
 
-#### Paginator
+### Paginator
 
 Now, we will need to paginate SDK responses, which can sometimes return an empty list and a pointer to the next page:
 
@@ -117,7 +117,7 @@ def iter_account_roles():
 
 Ok, so now we have the data structure that we need, but before rendering AWS profiles, let's obtain same data using API and CLI.
 
-### AWS API
+## AWS API
 
 In order to be able to download and run the script as is, we should avoid dependencies and use Python's standard library. To simplify making HTTP requests, let's make a few helper functions:
 
@@ -232,7 +232,7 @@ def iter_account_roles():
         )
 ```
 
-### AWS CLI
+## AWS CLI
 
 Let's start with creating a couple of helper functions:
 
@@ -321,7 +321,7 @@ def iter_account_roles():
                                  **kw, account_id=account['accountId'], key='roleList'))
 ```
 
-### AWS config profiles
+## AWS config profiles
 
 Now we can proceed to making profile config using the account roles we produced by any of the methods above. Let's iterate data, print profiles and then add default config and SSO session: 
 
