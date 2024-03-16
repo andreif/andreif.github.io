@@ -406,3 +406,7 @@ Other methods should work with standard Python distribution:
 ```shell
 python sso-config.py
 ```
+
+That's it! Let me know what you think:
+
+[Comments](https://twitter.com/afokau/status/1768998128374481120)
