@@ -1,5 +1,5 @@
 ---
-title: Segmentation fault for AWS CDK via Bun
+title: Segmentation fault for AWS CDK in Bun
 category: JS/TS
 tags: bun aws-cdk cli docker typescript
 ---
