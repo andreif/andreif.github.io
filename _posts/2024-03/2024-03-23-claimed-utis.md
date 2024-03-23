@@ -6,7 +6,7 @@ image:
   path: https://andrei.fokau.se/media/assets/xcode-sublime.webp
 ---
 
-Updating Xcode usually resets file type associations and requires reassigning default 
+Updating Xcode/macOS usually resets file type associations and requires reassigning default 
 program for them to some other editor that is not as slow and inflexible as Xcode. 
 I personally prefer [Sublime Text](https://www.sublimetext.com) and would really like Apple 
 to stop constantly messing up my configuration.
@@ -82,7 +82,9 @@ failed to scan /Developer/Applications/Xcode.app: -10814
 
 ## defaults read
 
-Since the article was published in 2012, the plist has been moved, so instead of old `~/Library/Preferences/com.apple.LaunchServices.plist` one should use `~/Library/Preferences/com.apple.LaunchServices/com.apple.launchservices.secure.plist`. Let's see what we have there:
+Since the article was published in 2012, the plist has been moved, so instead of old `~/Library/Preferences/com.apple.LaunchServices.plist` one should use `~/Library/Preferences/com.apple.LaunchServices/com.apple.launchservices.secure.plist`.
+
+Let's see what we have there:
 
 ```shell
 $ defaults read ~/Library/Preferences/com.apple.LaunchServices/com.apple.LaunchServices.secure.plist
@@ -122,11 +124,13 @@ Now we have to restart macOS, since relaunching Finder and running the following
 
 ## Test
 
+The following commands should open Sublime Text instead of Xcode. 
+
 ```shell
 touch Makefile
 open Makefile
 ```
 
-Should open Sublime Text instead of Xcode. Now we can make a script for opening all common files via our editor.
+Now we can make a script for opening all common files via our editor.
 
 TBC
