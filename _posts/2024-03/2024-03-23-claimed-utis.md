@@ -2,6 +2,8 @@
 title: David vs Goliath, or how to keep custom file associations after each Xcode update
 category: Tools
 tags: macos cli
+image:
+  path: https://andrei.fokau.se/media/assets/pty-pipe.webp
 ---
 
 Updating Xcode usually resets file type associations and requires reassigning default 
