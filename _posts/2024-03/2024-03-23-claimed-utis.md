@@ -60,4 +60,42 @@ $ mdls -name kMDItemContentType Makefile
 kMDItemContentType = "public.make-source"
 ```
 
+The article suggests that one can unregister Xcode, but it seems not possible anymore:
+
+```shell
+$ ./lsregister -u /Developer/Applications/Xcode.app
+failed to scan /Developer/Applications/Xcode.app: -10814
+ from spotlight
+```
+
+Also, since it was published in 2012, the plist has been moved/changed and instead of `~/Library/Preferences/com.apple.LaunchServices.plist` there are two files now:
+
+```shell
+$ ls -1 ~/Library/Preferences/com.apple.LaunchServices/
+com.apple.LaunchServices.SettingsStore.sql
+com.apple.LaunchServices.plist
+com.apple.launchservices.secure.plist
+```
+
+not giving any meaningful info:
+
+```shell
+$ defaults read ~/Library/Preferences/com.apple.LaunchServices/com.apple.launchservices
+{
+    "Architectures for arm64" =     {
+...
+
+$ defaults read ~/Library/Preferences/com.apple.LaunchServices/com.apple.launchservices.secure
+{
+    LSHandlers =     (
+                {
+            LSHandlerPreferredVersions =             {
+                LSHandlerRoleAll = "-";
+            };
+            LSHandlerRoleAll = "com.apple.gamecenter.gamecenteruiservice";
+            LSHandlerURLScheme = gamecenter;
+        },
+...
+```
+
 TBC
