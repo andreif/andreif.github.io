@@ -8,8 +8,8 @@ image:
 
 Updating Xcode usually resets file type associations and requires reassigning default 
 program for them to some other editor that is not as slow and inflexible as Xcode. 
-I personally prefer Sublime Text and would really like Apple to stop constantly messing 
-up my configuration.
+I personally prefer [Sublime Text](https://www.sublimetext.com) and would really like Apple 
+to stop constantly messing up my configuration.
 
 ## lsregister
 
@@ -25,7 +25,7 @@ ln -s /System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/La
 We can now dump Launch Service database, but since it takes some time, let's dump it to a text file first:
 
 ```shell
-./lsregister --dump > lsregister.txt  
+./lsregister -dump > lsregister.txt  
 ```
 
 Now, we can determine which programs are associated with specific file types: 
@@ -110,6 +110,55 @@ $ defaults read ~/Library/Preferences/com.apple.LaunchServices/com.apple.launchs
             LSHandlerURLScheme = gamecenter;
         },
 ...
+```
+
+## defaults write
+
+Using suggested command we can create `~/Library/Preferences/com.apple.LaunchServices.plist`:
+
+```shell
+$ defaults write com.apple.LaunchServices LSHandlers \
+    -array-add '{LSHandlerContentType=public.make-source;LSHandlerRoleAll=com.sublimetext.4;}'
+
+$ ls -1 ~/Library/Preferences/com.apple.LaunchServices*
+/Users/andrei/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV2
+/Users/andrei/Library/Preferences/com.apple.LaunchServices.plist
+
+/Users/andrei/Library/Preferences/com.apple.LaunchServices:
+com.apple.LaunchServices.SettingsStore.sql
+com.apple.LaunchServices.plist
+com.apple.launchservices.secure.plist
+```
+
+So reading it returns our config now:
+
+```shell
+$ defaults read com.apple.LaunchServices
+{
+    LSHandlers =     (
+                {
+            LSHandlerContentType = "public.make-source";
+            LSHandlerRoleAll = "com.sublimetext.4";
+        }
+    );
+}
+```
+
+However, it did not changed anything and `open Makefile` still opens the file in Xcode even 
+after restarting Finder and running:
+
+```shell
+./lsregister -kill -r -domain local -domain system -domain user
+```
+
+Same after changing the existing plists:
+
+```shell
+$ defaults write com.apple.LaunchServices/com.apple.LaunchServices LSHandlers \
+    -array '{LSHandlerContentType=public.make-source;LSHandlerRoleAll=com.sublimetext.4;}'
+
+$ defaults write com.apple.LaunchServices/com.apple.LaunchServices.secure LSHandlers \
+    -array '{LSHandlerContentType=public.make-source;LSHandlerRoleAll=com.sublimetext.4;}'
 ```
 
 TBC
