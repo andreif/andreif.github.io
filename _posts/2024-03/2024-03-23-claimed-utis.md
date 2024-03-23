@@ -82,61 +82,31 @@ failed to scan /Developer/Applications/Xcode.app: -10814
 
 ## defaults read
 
-Also, after it was published in 2012, the plist has been moved/changed and instead of old `~/Library/Preferences/com.apple.LaunchServices.plist` there are two files now:
+Since the article was published in 2012, the plist has been moved, so instead of old `~/Library/Preferences/com.apple.LaunchServices.plist` one should use `~/Library/Preferences/com.apple.LaunchServices/com.apple.launchservices.secure.plist`. Let's see what we have there:
 
 ```shell
-$ ls -1 ~/Library/Preferences/com.apple.LaunchServices/
-com.apple.LaunchServices.SettingsStore.sql
-com.apple.LaunchServices.plist
-com.apple.launchservices.secure.plist
-```
-
-not giving any meaningful info:
-
-```shell
-$ defaults read ~/Library/Preferences/com.apple.LaunchServices/com.apple.launchservices
-{
-    "Architectures for arm64" =     {
-...
-
-$ defaults read ~/Library/Preferences/com.apple.LaunchServices/com.apple.launchservices.secure
+$ defaults read ~/Library/Preferences/com.apple.LaunchServices/com.apple.LaunchServices.secure.plist
 {
     LSHandlers =     (
                 {
             LSHandlerPreferredVersions =             {
                 LSHandlerRoleAll = "-";
             };
-            LSHandlerRoleAll = "com.apple.gamecenter.gamecenteruiservice";
-            LSHandlerURLScheme = gamecenter;
+            LSHandlerRoleAll = "us.zoom.xos";
+            LSHandlerURLScheme = zoomphonecall;
         },
 ...
 ```
 
 ## defaults write
 
-Using suggested command we can create `~/Library/Preferences/com.apple.LaunchServices.plist`:
+Let's change default application for `Makefile`:
 
 ```shell
-$ defaults write com.apple.LaunchServices LSHandlers \
-    -array-add '{LSHandlerContentType=public.make-source;LSHandlerRoleAll=com.sublimetext.4;}'
+$ defaults write com.apple.LaunchServices/com.apple.LaunchServices.secure LSHandlers \
+   -array-add '{LSHandlerContentType=public.make-source;LSHandlerRoleAll=com.sublimetext.4;}'
 
-$ ls -1 ~/Library/Preferences/com.apple.LaunchServices*
-/Users/andrei/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV2
-/Users/andrei/Library/Preferences/com.apple.LaunchServices.plist
-
-/Users/andrei/Library/Preferences/com.apple.LaunchServices:
-com.apple.LaunchServices.SettingsStore.sql
-com.apple.LaunchServices.plist
-com.apple.launchservices.secure.plist
-```
-
-So reading it returns our config now:
-
-```shell
-$ defaults read com.apple.LaunchServices
-{
-    LSHandlers =     (
-                {
+$ defaults read com.apple.LaunchServices/com.apple.LaunchServices.secure | tail -5
             LSHandlerContentType = "public.make-source";
             LSHandlerRoleAll = "com.sublimetext.4";
         }
@@ -144,21 +114,19 @@ $ defaults read com.apple.LaunchServices
 }
 ```
 
-However, it did not changed anything and `open Makefile` still opens the file in Xcode even 
-after restarting Finder and running:
+Now we have to restart macOS, since relaunching Finder and running the following command does not help:
 
 ```shell
 ./lsregister -kill -r -domain local -domain system -domain user
 ```
 
-Same after changing the existing plists:
+## Test
 
 ```shell
-$ defaults write com.apple.LaunchServices/com.apple.LaunchServices LSHandlers \
-    -array '{LSHandlerContentType=public.make-source;LSHandlerRoleAll=com.sublimetext.4;}'
-
-$ defaults write com.apple.LaunchServices/com.apple.LaunchServices.secure LSHandlers \
-    -array '{LSHandlerContentType=public.make-source;LSHandlerRoleAll=com.sublimetext.4;}'
+touch Makefile
+open Makefile
 ```
+
+Should open Sublime Text instead of Xcode. Now we can make a script for opening all common files via our editor.
 
 TBC
