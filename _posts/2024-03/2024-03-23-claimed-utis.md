@@ -11,6 +11,8 @@ program for them to some other editor that is not as slow and inflexible as Xcod
 I personally prefer Sublime Text and would really like Apple to stop constantly messing 
 up my configuration.
 
+## lsregister
+
 Using tips from the article [lsregister: How Files Are Handled in Mac OS X](https://krypted.com/mac-security/lsregister-associating-file-types-in-mac-os-x/) we can automate assigning 
 Sublime Text for files we need.
 
@@ -30,6 +32,14 @@ Now, we can determine which programs are associated with specific file types:
 
 ```shell
 cat lsregister.txt | grep -E 'bundle id:|claimed UTIs:'
+```
+
+and for Xcode specifically:
+
+```shell
+$ cat lsregister.txt | grep -E 'bundle id:|claimed UTIs:' | grep 'Xcode (' -A1
+bundle id:                  Xcode (0x80c)
+claimed UTIs:               public.shell-script, public.bash-script, public.yaml, public.json, ...
 ```
 
 In order to see what Uniform Type Identifier (UTI) corresponds to a given filename extension, 
@@ -60,7 +70,9 @@ $ mdls -name kMDItemContentType Makefile
 kMDItemContentType = "public.make-source"
 ```
 
-The article suggests that one can unregister Xcode, but it seems not possible anymore:
+## Unregister
+
+The article also suggests that one can unregister Xcode, but it seems not possible anymore:
 
 ```shell
 $ ./lsregister -u /Developer/Applications/Xcode.app
@@ -68,7 +80,9 @@ failed to scan /Developer/Applications/Xcode.app: -10814
  from spotlight
 ```
 
-Also, since it was published in 2012, the plist has been moved/changed and instead of `~/Library/Preferences/com.apple.LaunchServices.plist` there are two files now:
+## defaults read
+
+Also, after it was published in 2012, the plist has been moved/changed and instead of old `~/Library/Preferences/com.apple.LaunchServices.plist` there are two files now:
 
 ```shell
 $ ls -1 ~/Library/Preferences/com.apple.LaunchServices/
