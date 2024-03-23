@@ -3,7 +3,7 @@ title: David vs Goliath, or how to keep custom file associations after each Xcod
 category: Tools
 tags: macos cli
 image:
-  path: https://andrei.fokau.se/media/assets/pty-pipe.webp
+  path: https://andrei.fokau.se/media/assets/xcode-sublime.webp
 ---
 
 Updating Xcode usually resets file type associations and requires reassigning default 
