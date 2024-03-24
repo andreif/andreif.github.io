@@ -50,10 +50,11 @@ def parse_plist(path):
     o = re.sub(r';\n', ',\n', o)
     o = re.sub(r'\)(,?)\n', ']\\1\n', o)
     o = re.sub(r',(\s+[}\]])', '\\1', o)
-    return o
+    return json.loads(o)
 
 
-print(json.dumps(json.loads(parse_plist(sys.argv[1]))))
+if __name__ == '__main__':
+    print(json.dumps(parse_plist(sys.argv[1])))
 ```
 
 Now we can run it:
