@@ -7,7 +7,7 @@ tags: macos cli python
 Sometimes one needs to know state of a plist before changing settings. For example, 
 when changing [LSHandlers in LaunchServices](/claimed-utis).
 
-We can see what's inside the file using `default read` command:
+We can see what's inside the file using `defaults read` command:
 
 ```shell
 $ defaults read ~/Library/Preferences/com.apple.LaunchServices/com.apple.launchservices.secure.plist
@@ -24,7 +24,7 @@ $ defaults read ~/Library/Preferences/com.apple.LaunchServices/com.apple.launchs
 ```
 
 Now we could use [`plists`](https://pypi.org/project/plists/), pure-python stdlib-only Python 
-package to parse the binary plist file, but the output of `default` looks so close to JSON 
+package to parse the binary plist file, but the output of `defaults` looks so close to JSON 
 that we could just convert it with just a few changes.
 
 Let's make `plist.py` containing:
@@ -92,3 +92,5 @@ and use it:
 ```shell
 plist path-to-my.plist
 ```
+
+Enjoy!
