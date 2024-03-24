@@ -38,7 +38,7 @@ import subprocess
 import sys
 
 
-def parse_plist(path):
+def parse(path):
     p = subprocess.run(['defaults', 'read', os.path.abspath(path)],
                        stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     if p.returncode:
@@ -54,7 +54,7 @@ def parse_plist(path):
 
 
 if __name__ == '__main__':
-    print(json.dumps(parse_plist(sys.argv[1])))
+    print(json.dumps(parse(sys.argv[1])))
 ```
 
 Now we can run it:
