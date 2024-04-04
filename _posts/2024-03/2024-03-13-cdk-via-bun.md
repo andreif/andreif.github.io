@@ -6,7 +6,7 @@ image:
   path: https://andrei.fokau.se/media/assets/bun-segfault-cdk.webp
 ---
 
-Unfortunately testing AWS CDK with Bun failed: 
+Unfortunately testing AWS CDK with Bun failed using the image from the [previous post](/bun-via-docker): 
 
 ```makefile
 .PHONY: demo
