@@ -57,25 +57,25 @@ version:
 	${bun} -v
 ```
 
-Now, let's log some events from a DLQ. Create a script `dlq-cli.ts`:
+Now, let's use it for something useful. For example, to log some events from a DLQ. 
+
+Create a script `dlq-cli.ts`:
 
 ```typescript
 import { $ } from "bun";
 
-function logMessage(msg) {
-    const body = JSON.parse(msg.Body);
-    if (body.detail) {
-        console.log("BUS", body.detail)
-    } else if (body.Message) {
-        console.log("SNS", JSON.parse(body.Message));
-    } else {
-        console.log("???", body);
-    }
-}
-
 (
   await $`aws sqs receive-message --queue-url ${Bun.argv[2]} --max-number-of-messages 10`.json()
-).Messages.forEach(logMessage);
+).Messages.forEach((msg) => {
+  const body = JSON.parse(msg.Body);
+  if (body.detail) {
+    console.log("BUS", body.detail)
+  } else if (body.Message) {
+    console.log("SNS", JSON.parse(body.Message))
+  } else {
+    console.log("???", body)
+  }
+})
 ```
 
 and then add a couple of targets to Makefile:
