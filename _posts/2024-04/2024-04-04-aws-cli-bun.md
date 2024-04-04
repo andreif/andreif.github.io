@@ -85,12 +85,10 @@ dlq-cli:
 	@${bun} dlq-cli.ts ${QUEUE_URL}
 	
 account1-dlq:
-	$(eval QUEUE_URL = "https://...")
-	@aws-vault exec account1-profile -- make dlq-cli
+	@aws-vault exec account1-profile -- make dlq-cli QUEUE_URL="https://..."
 
 account2-dlq:
-	$(eval QUEUE_URL = "https://...")
-	@aws-vault exec account2-profile -- make dlq-cli
+	@aws-vault exec account2-profile -- make dlq-cli QUEUE_URL="https://..."
 ```
 
 So now we can easily run it:
