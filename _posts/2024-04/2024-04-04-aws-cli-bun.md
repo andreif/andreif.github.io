@@ -24,7 +24,7 @@ RUN yum update -y && \
 ARG TARGET=linux-x64
 ARG URL=https://github.com/oven-sh/bun/releases/latest/download/bun-${TARGET}.zip
 
-RUN curl --fail --location --output /tmp/bun.zip "${URL}" && \
+RUN curl -fLo /tmp/bun.zip "${URL}" && \
     unzip -o /tmp/bun.zip -d /tmp && \
     mv /tmp/bun-${TARGET}/bun /usr/local/bin/ && \
     rm -r /tmp/bun*
