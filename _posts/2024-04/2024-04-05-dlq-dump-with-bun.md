@@ -31,7 +31,7 @@ await $`${obj} > obj.json`
 
 but oh well.
 
-We can log all messages with a simple loop:
+Now we can log all messages with a simple loop:
 
 ```typescript
 for await (let path of $`ls messages/*.json`.lines()) {
