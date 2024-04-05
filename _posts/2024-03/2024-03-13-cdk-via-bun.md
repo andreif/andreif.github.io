@@ -1,6 +1,6 @@
 ---
 title: Segmentation fault for AWS CDK in Bun
-category: JS/TS
+category: Bun
 tags: bun aws-cdk cli docker typescript
 image:
   path: https://andrei.fokau.se/media/assets/bun-segfault-cdk.webp

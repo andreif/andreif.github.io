@@ -1,6 +1,6 @@
 ---
 title: Bun CLI via Docker
-category: JS/TS
+category: Bun
 tags: bun cli docker typescript
 ---
 
