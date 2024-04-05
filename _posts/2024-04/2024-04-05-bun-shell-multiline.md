@@ -4,7 +4,7 @@ category: Bun
 tags: aws-cli bun typescript tools
 ---
 
-Bun shell is great for shorter commands, but when they become too long, then it gets a bit tricky. 
+Bun shell [is great](/aws-cli-bun) for shorter commands, but when they become too long, then it gets a bit tricky. 
 Thankfully, there is [`{raw: }`](https://bun.sh/docs/runtime/shell#escape-escape-strings) feature, 
 that can help us to handle numerous arguments and long commands. 
 
