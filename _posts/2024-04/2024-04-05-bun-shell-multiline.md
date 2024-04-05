@@ -5,7 +5,8 @@ tags: aws-cli bun typescript tools
 ---
 
 Bun shell is great for shorter commands but when they become too long then it gets a bit tricky. 
-Thankfully, there is `{raw: }` feature that can help to handle numerous arguments and long commands. 
+Thankfully, there is [`{raw: }`](https://bun.sh/docs/runtime/shell#escape-escape-strings) feature 
+that can help to handle numerous arguments and long commands. 
 
 Let's make a helper function `sh()`:
 
