@@ -18,10 +18,10 @@ function sh(...args) {
   const raw = args.map((a) => {
     if (Array.isArray(a)) {
       return a.map(String).join(' ');
-    } else if (typeof a === "object") {
-      return Object.entries(a).map(([k, v]) => `--${k} "${v}"`).join(' ');
+    } else if (typeof a === 'object') {
+      return Object.entries(a).map(([k, v]) => `--${k}="${v}"`).join(' ');
     } else {
-      return `${a}`
+      return `${a}`;
     }
   }).join(' ');
   console.log(`$ ${raw}`);
