@@ -9,6 +9,7 @@ Thankfully, there is `{raw: }` feature that can help to handle numerous argument
 
 Let's make a helper function `sh()`:
 
+{% raw %}
 ```typescript
 import { $ } from "bun";
 
@@ -26,6 +27,7 @@ function sh(...args) {
   return $`${{raw}}`;
 }
 ```
+{% endraw %}
 
 and then use it for our [SQS example](/aws-cli-bun) from the previous post: 
 
