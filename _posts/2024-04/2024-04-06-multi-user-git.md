@@ -9,7 +9,7 @@ local config anyway, so we can skip messing with hosts and just make a few shell
 help us to configure each repo.
 
 First of all, we will need some global settings. We can configure them to use our private account. 
-Assuming we sign private repo commits using SSH format:
+Assuming we sign private repo commits using SSH format (see [GitHub docs](https://docs.github.com/en/authentication/managing-commit-signature-verification/telling-git-about-your-signing-key) for details):
 
 ```shell
 function git-global {
