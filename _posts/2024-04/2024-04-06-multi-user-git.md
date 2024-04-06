@@ -3,12 +3,12 @@ title: Multi-user Git config
 tags: git github shell profile tools
 ---
 
-Having multiple accounts on GitHub (e.g. one private and one or more work accounts) requires 
+Having multiple accounts on GitHub (e.g. one private and one or more for work) requires 
 setting up either custom hosts or setting per-repo local config. Signed commits would require 
-local config anyway so we can skip messing with hosts and just made a few shell functions to 
-help us configure each repo.
+local config anyway, so we can skip messing with hosts and just make a few shell functions to 
+help us to configure each repo.
 
-First of all we will need some global settings, and we can set them to our private account. 
+First of all, we will need some global settings. We can configure them to use our private account. 
 Assuming we sign private repo commits using SSH format:
 
 ```shell
@@ -33,7 +33,7 @@ function git-global {
 git-global
 ```
 
-Now let's make a function to configure repo from a work organization where we use a separate user.
+Now let's make a function to configure repo clone from the organization where we use a separate user.
 And for this case, let's use PGP signing:
 
 ```shell
@@ -50,7 +50,7 @@ function git-work1 {
 }
 ```
 
-Now every time we clone a new repo we can set its local config by running:
+Now, every time we clone a new repo, we can set its local config by running:
 
 ```shell
 $ git-work1
@@ -74,7 +74,7 @@ function git-unset {
 }
 ```
 
-As a bonus, we can also add the following function that would help us with completion and prompt:
+As a bonus, we can also use the following function to help us with completion and prompt:
 
 ```shell
 function git-completion() {
@@ -95,3 +95,5 @@ function gl() {
   git log $* --decorate --graph --date=short --pretty=format:"%C(yellow)%h%Creset %G? %C(red)%d%Creset %C(green)%an%Creset  %C(cyan)%cr%Creset  %s";
 }
 ```
+
+Enjoy!
