@@ -74,6 +74,8 @@ function git-unset {
 }
 ```
 
+### Extras
+
 As a bonus, we can also use the following function to help us with completion and prompt:
 
 ```shell
