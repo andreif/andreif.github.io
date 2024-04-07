@@ -97,7 +97,7 @@ function gl() {
 }
 ```
 
-That one can also be defined as an alias:
+which can also be defined as an alias:
 
 ```shell
 git config --global alias.l 'log --decorate --graph  --date=short '\
@@ -105,7 +105,7 @@ git config --global alias.l 'log --decorate --graph  --date=short '\
 ' %C(cyan)%cr%Creset  %s"'
 ```
 
-and used like:
+and used like this:
 
 ```shell
 $ git l
