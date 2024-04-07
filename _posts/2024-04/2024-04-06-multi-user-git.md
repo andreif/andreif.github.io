@@ -92,8 +92,24 @@ And also one for making a pretty git log tree:
 
 ```shell
 function gl() {
-  git log $* --decorate --graph --date=short --pretty=format:"%C(yellow)%h%Creset %G? %C(red)%d%Creset %C(green)%an%Creset  %C(cyan)%cr%Creset  %s";
+  git log $* --decorate --graph --date=short \
+  --pretty=format:"%C(yellow)%h%Creset %G? %C(red)%d%Creset %C(green)%an%Creset  %C(cyan)%cr%Creset  %s";
 }
+```
+
+That one can also be defined as an alias:
+
+```shell
+git config --global alias.l 'log --decorate --graph  --date=short '\
+'--pretty=format:"%C(yellow)%h%Creset %G? %C(red)%d%Creset %C(green)%an%Creset '\
+' %C(cyan)%cr%Creset  %s"'
+```
+
+and used like:
+
+```shell
+$ git l
+$ gl
 ```
 
 Enjoy!
