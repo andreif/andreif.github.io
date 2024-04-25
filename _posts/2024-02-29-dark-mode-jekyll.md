@@ -18,7 +18,7 @@ image:
 Sign in to GitHub and [use this template][use-template] to generate a brand new repository and name it
 `USERNAME.github.io`, where `USERNAME` represents your GitHub username.
 
-Then change version in `Gemfile` to work around a recent issue:
+Then change version in `Gemfile` to work around a recent [issue](https://github.com/cotes2020/jekyll-theme-chirpy/issues/1556#issuecomment-1966562390):
 
 ```ruby
 gem "jekyll-theme-chirpy", "~> 6.4.2"
@@ -43,7 +43,7 @@ Also, choose Page deploy via workflow to avoid double action run.
 
 ## Better code blocks
 
-Create `/assets/css/jekyll-theme-chirpy.scss` to use some opionated syntax highlighting improvements.
+Create `/assets/css/jekyll-theme-chirpy.scss` to use some opinionated syntax highlighting improvements.
 
 ```scss
 ---
